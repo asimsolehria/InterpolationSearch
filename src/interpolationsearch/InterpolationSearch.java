@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package interpolationsearch;
 
 /**
@@ -11,11 +7,33 @@ package interpolationsearch;
  */
 public class InterpolationSearch {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public int interpolationSearch(int arr[] ,int x) 
+    { 
+        int start = 0, end = (arr.length - 1); 
+       
+ 
+        while (start <= end && x >= arr[start] && x <= arr[end]) 
+        {         
+  
+            if (start == end) 
+            { 
+                if (arr[start] == x) return start; 
+                return -1; 
+            }
+              
+            int pos = start + (((end-start) / 
+                  (arr[end]-arr[start]))*(x - arr[start]));
+
+            if (arr[pos] == x) 
+                return pos;
+
+            if (arr[pos] < x) 
+                start = pos + 1; 
+       
+            else
+                end = pos - 1; 
+        } 
+        return -1; 
+    } 
     
 }
